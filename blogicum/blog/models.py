@@ -43,12 +43,13 @@ class Post(BaseModel):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        verbose_name='Автор публикации')
+        verbose_name='Автор публикации',)
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='Категория',)
+        related_name='posts',
+        verbose_name='Категория')
     location = models.ForeignKey(
         Location,
         on_delete=models.SET_NULL,
