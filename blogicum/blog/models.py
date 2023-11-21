@@ -48,7 +48,7 @@ class Post(BaseModel):
         Category,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='posts',
+        related_name='post_list',
         verbose_name='Категория')
     location = models.ForeignKey(
         Location,

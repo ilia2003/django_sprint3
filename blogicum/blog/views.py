@@ -17,7 +17,7 @@ def get_queryset(query):
 def index(request):
     templates = 'blog/index.html'
     posts = get_queryset(Post.objects).order_by('-pub_date')[:5]
-    context = {'post_list': posts}
+    context = {'posts': posts}
     return render(request, templates, context)
 
 
@@ -32,8 +32,8 @@ def category_posts(request, category_slug):
     templates = 'blog/category.html'
     category = get_object_or_404(
         Category, slug=category_slug, is_published=True)
-    posts = get_queryset(category.posts)
+    posts = get_queryset(category.post_list)
     context = {
         'category': category,
-        'posts': posts}
+        'post_list': posts}
     return render(request, templates, context)
