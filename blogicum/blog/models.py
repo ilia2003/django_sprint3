@@ -1,6 +1,7 @@
 from django.db import models
-from core.models import BaseModel
 from django.contrib.auth import get_user_model
+
+from core.models import BaseModel
 
 
 User = get_user_model()
@@ -16,8 +17,8 @@ class Category(BaseModel):
         unique=True)
 
     class Meta:
-        verbose_name = "категория"
-        verbose_name_plural = "Категории"
+        verbose_name = 'категория'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.title
@@ -27,8 +28,8 @@ class Location(BaseModel):
     name = models.CharField(verbose_name='Название места', max_length=256)
 
     class Meta:
-        verbose_name = "местоположение"
-        verbose_name_plural = "Местоположения"
+        verbose_name = 'местоположение'
+        verbose_name_plural = 'Местоположения'
 
     def __str__(self):
         return self.title
@@ -58,8 +59,9 @@ class Post(BaseModel):
         verbose_name='Местоположение',)
 
     class Meta:
-        verbose_name = "публикация"
-        verbose_name_plural = "Публикации"
+        verbose_name = 'публикация'
+        verbose_name_plural = 'Публикации'
+        ordering = ['-pub_date']
 
     def __str__(self):
         return self.title
